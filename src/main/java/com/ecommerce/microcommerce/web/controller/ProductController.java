@@ -14,7 +14,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ProductController {
@@ -67,10 +69,11 @@ public class ProductController {
 
     //calcul de marge
     @GetMapping(value="/AdminProduits")
-    public Product calculerMargeProduit() {
-        //Product p
-        //return productDao.chercherUnProduitPasCher(id);
-        return null;
+    public Map<Product, Double> calculerMargeProduit() {
+        Map m = new HashMap<Product, Double>();
+        for(Product p : productDao.findAll())
+            m.put(p, p.getPrix() - p.getPrixAchat());
+        return m;
     }
 
     //ajouter un produit
