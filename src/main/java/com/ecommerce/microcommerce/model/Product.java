@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Min;
 
 //@JsonIgnoreProperties(value = {"id", "prixAchat"})
-//@JsonFilter("monFiltreDynamique")
+@JsonFilter("monFiltreDynamique")
 @Entity
 public class Product {
 
@@ -21,10 +21,10 @@ public class Product {
     @Length(min=3, max=20, message="Le format du nom n'est pas respecté (entre 3 et 20 caractères)")
     private String nom;
 
-    @Min(value=1)
+    //@Min(value=1) conflit avec l'exception du TP 7
     private double prix;
 
-    @Min(value=1)
+    //@Min(value=1) conflit avec l'exception du TP 7
     private double prixAchat;
 
     public Product() {

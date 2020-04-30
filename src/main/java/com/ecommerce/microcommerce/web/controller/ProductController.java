@@ -25,13 +25,13 @@ public class ProductController {
     private ProductDao productDao;
 
     //afficher tous les produits
-    @GetMapping(value="/Produits")
+    /*@GetMapping(value="/Produits")
     public List<Product> listeProduits() {
         return productDao.findAll();
-    }
+    }*/
 
     //afficher tous les produits
-    /*@GetMapping(value="/Produits")
+    @GetMapping(value="/Produits")
     public MappingJacksonValue listeProduits() {
         List<Product> produits = productDao.findAll();
         SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("prixAchat");
@@ -39,7 +39,7 @@ public class ProductController {
         MappingJacksonValue produitsFiltres = new MappingJacksonValue(produits);
         produitsFiltres.setFilters(listDeNosFiltres);
         return produitsFiltres;
-    }*/
+    }
 
     //afficher un produit
     @GetMapping(value="/Produits/{id}")
@@ -57,13 +57,13 @@ public class ProductController {
     }
 
     //recherche pas prix
-    @GetMapping(value="/Produits/prix/{prixLimit}")
-    public List<Product> rechercherUnPrix(@PathVariable double prixLimit) {
+    @GetMapping(value="/Produits/prixPlusQue/{prixLimit}")
+    public List<Product> rechercherUnGrosPrix(@PathVariable double prixLimit) {
         return productDao.findByPrixGreaterThan(prixLimit);
     }
 
     //recherche pas prix
-    @GetMapping(value="/Produits/petitPrix/{prixLimit}")
+    @GetMapping(value="/Produits/prixMoinsQue/{prixLimit}")
     public List<Product> rechercherUnPetitPrix(@PathVariable double prixLimit) {
         return productDao.queryPriceLowerThan(prixLimit);
     }
