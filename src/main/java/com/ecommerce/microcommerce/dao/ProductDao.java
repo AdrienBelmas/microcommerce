@@ -27,5 +27,5 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
     void deleteAll();
 
     @Query("SELECT p FROM Product p WHERE p.prix < :prixLimit")
-    List<Product> priceLowerThan(@Param("prixLimit") double prix);
+    List<Product> queryPriceLowerThan(@Param("prixLimit") double prix);
 }

@@ -18,7 +18,7 @@ public class Product {
     @GeneratedValue
     private int id;
 
-    @Length(min=3, max=20, message="BAD FUCKING REQUEST SUCEUR")
+    @Length(min=3, max=20, message="Le format du nom n'est pas respecté (entre 3 et 20 caractères)")
     private String nom;
 
     @Min(value=1)

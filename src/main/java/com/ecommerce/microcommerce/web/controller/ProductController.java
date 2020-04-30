@@ -3,6 +3,7 @@ package com.ecommerce.microcommerce.web.controller;
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
 import com.ecommerce.microcommerce.web.exceptions.ProductNotFoundException;
+import com.ecommerce.microcommerce.web.exceptions.ProduitGratuitException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
@@ -45,7 +46,7 @@ public class ProductController {
     public Product afficherUnProduit(@PathVariable int id) {
         Product p = productDao.findById(id);
         if (p == null)
-            throw new ProductNotFoundException("CA EXISTE PAS GROS FDP");
+            throw new ProductNotFoundException("Ce produit n'existe pas");
         return p;
     }
 
@@ -64,7 +65,7 @@ public class ProductController {
     //recherche pas prix
     @GetMapping(value="/Produits/petitPrix/{prixLimit}")
     public List<Product> rechercherUnPetitPrix(@PathVariable double prixLimit) {
-        return productDao.priceLowerThan(prixLimit);
+        return productDao.queryPriceLowerThan(prixLimit);
     }
 
     //calcul de marge
@@ -85,6 +86,8 @@ public class ProductController {
     //ajouter un produit
     @PostMapping(value="/Produits")
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
+        if (product.getPrix() <= 0)
+            throw new ProduitGratuitException("Le prix ne peut pas être gratuit");
         Product p = productDao.save(product);
         if (p == null)
             return ResponseEntity.noContent().build();
@@ -99,6 +102,8 @@ public class ProductController {
     //modifier un produit
     @PutMapping(value="/Produits")
     public Product modifierProduit(@Valid @RequestBody Product product) {
+        if (product.getPrix() <= 0)
+            throw new ProduitGratuitException("Le prix ne peut pas être gratuit");
         return productDao.save(product);
     }
 
