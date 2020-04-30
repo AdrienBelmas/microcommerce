@@ -18,6 +18,8 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
     List<Product> findByNomLike(String nomRecherche);
 
+    List<Product> findByOrderByNomAsc();
+
     Product save(Product product);
 
     void deleteById(int id);

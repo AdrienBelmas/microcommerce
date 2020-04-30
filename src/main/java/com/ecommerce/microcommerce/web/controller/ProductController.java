@@ -76,6 +76,12 @@ public class ProductController {
         return m;
     }
 
+    //trier par nom
+    @GetMapping(value="/Produits/orderNom")
+    public List<Product> trierProduitsParOrdreAlphabetique() {
+        return productDao.findByOrderByNomAsc();
+    }
+
     //ajouter un produit
     @PostMapping(value="/Produits")
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
