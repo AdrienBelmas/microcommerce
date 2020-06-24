@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Min;
 
 //@JsonIgnoreProperties(value = {"id", "prixAchat"})
-@JsonFilter("monFiltreDynamique")
+//@JsonFilter("monFiltreDynamique")
 @Entity
 public class Product {
 

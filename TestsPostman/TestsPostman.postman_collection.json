@@ -1,0 +1,188 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestsPostman",
+		"_postman_id": "0be84980-9996-6aa7-418c-91e380c84827",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL",
+			"request": {
+				"url": "http://localhost:9090/Produits/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET BY Id",
+			"request": {
+				"url": "http://localhost:9090/Produits/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET BY Nom",
+			"request": {
+				"url": "http://localhost:9090/Produits/nom/ordi",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Prix GREATER THAN",
+			"request": {
+				"url": "http://localhost:9090/Produits/prixPlusQue/20",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Prix LOWER THAN",
+			"request": {
+				"url": "http://localhost:9090/Produits/prixMoinsQue/500",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Marge",
+			"request": {
+				"url": "http://localhost:9090/AdminProduits",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET ORDER BY Nom",
+			"request": {
+				"url": "http://localhost:9090/Produits/orderNom",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "INSERT",
+			"request": {
+				"url": "http://localhost:9090/Produits/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"nom\": \"Poney en bois\",\n\"prix\": 145,\n\"prixAchat\": 100\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "INSERT EXCEPTION Nom",
+			"request": {
+				"url": "http://localhost:9090/Produits/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"nom\": \"Poney en bois cracheur de feu\",\n\"prix\": 145,\n\"prixAchat\": 100\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "INSERT EXCEPTION Prix",
+			"request": {
+				"url": "http://localhost:9090/Produits/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"nom\": \"Poney en bois\",\n\"prix\": 0,\n\"prixAchat\": 100\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE Id",
+			"request": {
+				"url": "http://localhost:9090/Produits/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"id\": 1,\n\"nom\": \"Nouveau nom nouvelle vie\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Id",
+			"request": {
+				"url": "http://localhost:9090/Produits/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
